@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: bgg_dataset_1
+    tables:
+      - name: BGG_Data_set
+        identifier: BGG
+      - name: bgg_price_merged
+        identifier: price
+  - name: bgg_dataset_2
+    tables:
+      - name: bgg-26m-review
+        identifier: reviews
+      - name: games_detailed_info2025
+        identifier: detailed
+  - name: bgg_store_top_sales
+    tables:
+      - name: bgg-clean
+        identifier: top-sales
+  - name: dataset_sales_clean
+    tables:
+      - name: data_sales_clean
+        identifier: sales
