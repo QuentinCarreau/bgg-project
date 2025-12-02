@@ -1,4 +1,4 @@
-WITH join_1 AS ( 
+WITH join_2 AS ( 
     SELECT
         *
     FROM {{ ref('stg_bgg_dataset_1__BGG_Data_Set') }}
@@ -8,14 +8,14 @@ WITH join_1 AS (
 
 ,
 
-joint_2 AS (
+joint_3 AS (
     SELECT *
-    FROM join_1
+    FROM join_2
     LEFT JOIN {{ ref('stg_bgg_dataset_3__bgg_mechanics') }}
         USING (id)
 )
 
 SELECT *
-FROM joint_2
+FROM joint_3
 LEFT JOIN {{ ref('stg_bgg_dataset_3__bgg_themes') }}
     USING (id)
