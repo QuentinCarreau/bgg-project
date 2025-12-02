@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: bgg_dataset_1
     tables:
+<<<<<<< HEAD
       - name: BGG_Data_set
         identifier: BGG
       - name: bgg_price_merged
@@ -21,3 +22,12 @@ sources:
     tables:
       - name: data_sales_clean
         identifier: sales
+=======
+      - name: BGG_Data_Set
+      - name: bgg_price_merged
+  - name: bgg_dataset_3
+    tables:
+      - name: bgg_categories
+      - name: bgg_mechanics
+      - name: bgg_themes
+>>>>>>> 7f6527120f4ff510561f15c0c19cc30132c9b3b7
