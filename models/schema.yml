@@ -8,9 +8,14 @@ sources:
   - name: bgg_dataset_3
     tables:
       - name: bgg_categories
+        +materialized: table
       - name: bgg_mechanics
+        +materialized: table
       - name: bgg_themes
+        +materialized: table
   - name: bgg_dataset_2 
     tables: 
       - name: bgg_games_reviews_info2025_cleaned
+        +materialized: table
       - name: bgg_reviews_clean
+        +materialized: table
