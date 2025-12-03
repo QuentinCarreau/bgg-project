@@ -232,4 +232,7 @@ renamed as (
 
 )
 
-select * from renamed
+select 
+    "themes" AS theme,
+    * 
+from renamed
