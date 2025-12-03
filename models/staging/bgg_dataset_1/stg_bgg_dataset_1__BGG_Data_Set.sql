@@ -29,3 +29,4 @@ renamed as (
 )
 
 select * from renamed
+where id is not null
