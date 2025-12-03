@@ -13,7 +13,7 @@ SELECT
         d1.play_time,
         d1.min_age,
         d1.users_rated,
-        d1.ating_average,
+        d1.rating_average,
         d1.bgg_rank,
         d1.complexity_average,
         d1.owned_users,
