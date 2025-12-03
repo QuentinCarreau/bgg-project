@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: bgg_dataset_1
+    tables:
+      - name: BGG_Data_Set
+      - name: bgg_price_merged
+  - name: bgg_dataset_3
+    tables:
+      - name: bgg_categories
+      - name: bgg_mechanics
+      - name: bgg_themes
