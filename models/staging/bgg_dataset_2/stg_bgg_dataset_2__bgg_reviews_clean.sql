@@ -13,7 +13,7 @@ renamed as (
         users_name,
         rating,
         comment,
-        game_id,
+        game_id AS id,
         name
 
     from source
