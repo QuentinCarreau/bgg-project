@@ -22,4 +22,12 @@ renamed as (
 
 )
 
-select * from renamed
+select
+    id,
+    price,
+    product,
+    shipping,
+    stock,
+    country,
+    versions
+from renamed
