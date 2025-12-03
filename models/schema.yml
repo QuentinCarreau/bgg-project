@@ -10,3 +10,7 @@ sources:
       - name: bgg_categories
       - name: bgg_mechanics
       - name: bgg_themes
+  - name: bgg_dataset_2 
+    tables: 
+      - name: bgg_games_reviews_info2025_cleaned
+      - name: bgg_reviews_clean
