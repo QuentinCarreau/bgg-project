@@ -25,4 +25,7 @@ renamed as (
 
 )
 
-select * from renamed
+select 
+    "categories" AS category,
+    * 
+from renamed
