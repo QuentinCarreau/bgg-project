@@ -172,7 +172,5 @@ renamed as (
 
 )
 
-select 
-    "mechanics" AS mechanic,
-    * 
+select * 
 from renamed
