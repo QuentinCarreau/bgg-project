@@ -5,6 +5,7 @@ sources:
     tables: 
       - name: game_sentiment_polarization
       - name: bgg_price
+      - name: enriched_types_clean
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
