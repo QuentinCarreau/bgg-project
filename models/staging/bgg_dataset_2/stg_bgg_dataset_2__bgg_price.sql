@@ -13,7 +13,7 @@ renamed as (
         lang,
         product,
         external_id as id,
-        name
+        name as game_name
 
     from source
 
