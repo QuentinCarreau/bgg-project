@@ -1,3 +1,5 @@
+{{config(materialized="table")}}
+
 select
     *
 FROM {{ ref('stg_bgg_vues__bgg_split_cats_mechs_family_year_clean') }}
