@@ -6,6 +6,9 @@ sources:
       - name: game_sentiment_polarization
       - name: bgg_price
       - name: enriched_types_clean
+      - name: games_detailed_info2025 
+      - name: join_bgg_split_all_type
+      - name: good_and_bad_feature_count_review
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
