@@ -10,7 +10,7 @@ renamed as (
 
     select
         id,
-        name,
+        name as game_name,
         final_year as year,
         min_players,
         max_players,
@@ -23,7 +23,7 @@ renamed as (
         artist,
         publisher,
         nb_of_ratings,
-        avg_rate,
+        avg_rate as avg_rating,
         bayes_avg,
         owned_by as owned,
         people_wishing,

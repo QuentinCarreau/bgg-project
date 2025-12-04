@@ -9,7 +9,7 @@ source as (
 renamed as (
 
     select
-        name,
+        name as game_name,
         author,
         illustrator,
         publisher,

@@ -9,12 +9,12 @@ source as (
 renamed as (
 
     select
-        unnamed: 0 as user_id,
+        `unnamed: 0` as user_id,
         user as user_name,
-        rating as user_rating,
+        rating as avg_rating,
         comment,
         id,
-        name,
+        `name` as game_name,
         vader_compound as vader
 
     from source
