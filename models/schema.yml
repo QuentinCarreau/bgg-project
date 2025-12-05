@@ -10,6 +10,7 @@ sources:
       - name: good_and_bad_feature_count_review
       - name: mapping_table_type_final
       - name: mapping_table_engagement_rate
+      - name: avg_vader_rating_reviews
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
