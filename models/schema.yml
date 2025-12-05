@@ -1,16 +1,18 @@
 version: 2
 
-sources:
-  - name: bgg_dataset_1
-    tables:
-      - name: BGG_Data_Set
-      - name: bgg_price_merged
-  - name: bgg_dataset_3
-    tables:
-      - name: bgg_categories
-      - name: bgg_mechanics
-      - name: bgg_themes
+sources:    
   - name: bgg_dataset_2 
     tables: 
-      - name: bgg_games_reviews_info2025_cleaned
-      - name: bgg_reviews_clean
+      - name: game_sentiment_polarization
+      - name: bgg_price
+      - name: enriched_types_clean
+      - name: games_detailed_info2025 
+      - name: join_bgg_split_all_type
+      - name: good_and_bad_feature_count_review
+      - name: mapping_table_type_final
+  - name: bgg_vues
+    tables:
+      - name: bgg_split_cats_mechs_family_year_clean
+  - name: GOTY
+    tables:
+      - name: GOTY_clean
