@@ -9,12 +9,10 @@ sources:
       - name: games_detailed_info2025 
       - name: good_and_bad_feature_count_review
       - name: mapping_table_type_final
+      - name: mapping_table_engagement_rate
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
-  - name: GOTY
-    tables:
-      - name: GOTY_clean
   - name: bgg_kpi_exploration
     tables:
       - name: bgg_games_enriched_with_kpis_part_two
