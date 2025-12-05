@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('bgg_dataset_2', 'join_bgg_split_all_type') }}
+    select * from {{ source('bgg_kpi_exploration', 'bgg_games_enriched_with_kpis_part_two') }}
 
 ),
 
@@ -10,7 +10,7 @@ renamed as (
 
     select
         id,
-        game_name,
+        name as game_name,
         year,
         min_players,
         max_players,
@@ -19,17 +19,17 @@ renamed as (
         categories,
         mechanics,
         family,
-        designer,
-        artist,
         publisher,
         nb_of_ratings,
-        avg_rating,
+        avg_rate as avg_rating,
         bayes_avg,
         owned,
         people_wishing,
         nb_weights,
         avg_difficulty,
-        type
+        bgg_rank,
+        difficulty,
+        engaging_rate
 
     from source
 
