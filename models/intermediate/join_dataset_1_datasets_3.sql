@@ -1,3 +1,4 @@
+{{ config(materialized='table')}}
 WITH join_1 AS (
     SELECT
         *
