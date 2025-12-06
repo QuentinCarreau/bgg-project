@@ -15,8 +15,14 @@ sources:
             description: le type de jeu
           - name: id
             description: id du jeu
+            tests:
+              #clé primaire
+              - unique
+              - not_null
           - name: yearpublished
             description: année de publication du jeu
+            tests:
+              - not_null
           - name: minplayers
             description: nombre minimum de joueur pour jouer
           - name: maxplayers

@@ -31,7 +31,6 @@ second_join AS (
     SELECT
         first_join.id,
         first_join.game_name,
-        first_join.year,
         first_join.min_players,
         first_join.max_players,
         first_join.age_min,
@@ -60,7 +59,6 @@ third_join AS (
     SELECT 
         second_join.id,
         second_join.game_name,
-        second_join.year,
         second_join.min_players,
         second_join.max_players,
         second_join.age_min,
@@ -86,12 +84,21 @@ third_join AS (
         USING(id)
 ),
 
+games_detailed_info2025_join AS (
+    SELECT
+        third_join.*,
+        t5.yearpublished_clean
+    FROM {{ ref('stg_bgg_dataset_2__games_detailed_info2025') }} as t5
+    INNER JOIN third_join
+        USING(id)
+),
+
 fourth_join AS (
     SELECT
         third_join.*,
         t6.vader
     FROM third_join
-    LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
+    INNER JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
 )
 
