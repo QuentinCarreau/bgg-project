@@ -4,10 +4,9 @@ WITH first_join AS (
     SELECT
         t1.id,
         t1.game_name,
-        t1.year,
+        t1.year AS year_published,
         t1.min_players,
         t1.max_players,
-        t1.game_duration,
         t1.age_min,
         t1.categories,
         t1.mechanics,
@@ -35,7 +34,6 @@ second_join AS (
         first_join.year,
         first_join.min_players,
         first_join.max_players,
-        first_join.game_duration,
         first_join.age_min,
         t3.categories,
         first_join.mechanics,
@@ -65,7 +63,6 @@ third_join AS (
         second_join.year,
         second_join.min_players,
         second_join.max_players,
-        second_join.game_duration,
         second_join.age_min,
         second_join.categories,
         second_join.mechanics,
@@ -87,11 +84,20 @@ third_join AS (
     FROM second_join
     LEFT JOIN {{ ref('stg_bgg_dataset_2__mapping_table_engagement_rate') }} as t4
         USING(id)
+),
+
+fourth_join AS (
+    SELECT
+        third_join.*,
+        t6.vader
+    FROM third_join
+    LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
+        USING(id)
 )
 
 SELECT
-    third_join.*,
-    t6.vader
-FROM third_join
-LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
-    USING(id)
+    fourth_join.*,
+    game_duration
+FROM fourth_join
+LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_game_duration_cat_2') }} AS t7
+        USING(id)

@@ -2,15 +2,34 @@ version: 2
 
 sources:    
   - name: bgg_dataset_2 
+    description: Dataset_2 de la base BGG extrait de Kaggle
+    loader: bigquery
     tables: 
       - name: game_sentiment_polarization
       - name: bgg_price
       - name: enriched_types_clean
-      - name: games_detailed_info2025 
+      - name: games_detailed_info2025
+        description: Table détaillé de tous les jeux de la base BGG
+        columns:
+          - name: type
+            description: le type de jeu
+          - name: id
+            description: id du jeu
+          - name: yearpublished
+            description: année de publication du jeu
+          - name: minplayers
+            description: nombre minimum de joueur pour jouer
+          - name: maxplayers
+            description: nombre maximum de joueur pour jouer
+          - name: minplaytime
+            description: temps de jeu minimum
+          - name: maxplaytime
+            description: temps de jeu maximum
       - name: good_and_bad_feature_count_review
       - name: mapping_table_type_final
       - name: mapping_table_engagement_rate
       - name: avg_vader_rating_reviews
+      - name: bgg_game_duration_cat_2
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
