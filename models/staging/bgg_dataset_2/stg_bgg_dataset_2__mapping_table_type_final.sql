@@ -11,7 +11,7 @@ renamed as (
     select
         id,
         categories,
-        final_type
+        IF (final_type = '', "Autre", final_type)
 
     from source
 
