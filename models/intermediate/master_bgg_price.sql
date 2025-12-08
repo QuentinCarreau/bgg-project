@@ -123,10 +123,16 @@ fourth_join AS (
     LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_price') }} AS t5
         USING(id)
 )
+,
+fifth_join AS (
+    SELECT
+        fourth_join.*,
+        t6.vader
+    FROM fourth_join
+    LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
+        USING(id)
+)
 
-SELECT
-    fourth_join.*,
-    t6.vader
-FROM fourth_join
-LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
-    USING(id)
+SELECT *
+FROM fifth_join
+WHERE price >= 5 AND price <= 100 
