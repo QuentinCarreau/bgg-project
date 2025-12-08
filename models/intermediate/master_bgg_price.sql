@@ -4,7 +4,7 @@ WITH first_join AS (
     SELECT
         t1.id,
         t1.game_name,
-        t1.year,
+        t1.published_year,
         t1.min_players,
         t1.max_players,
         t1.game_duration,
@@ -32,7 +32,7 @@ second_join AS (
     SELECT
         first_join.id,
         first_join.game_name,
-        first_join.year,
+        first_join.published_year,
         first_join.min_players,
         first_join.max_players,
         first_join.game_duration,
@@ -62,7 +62,7 @@ third_join AS (
     SELECT 
         second_join.id,
         second_join.game_name,
-        second_join.year,
+        second_join.published_year,
         second_join.min_players,
         second_join.max_players,
         second_join.game_duration,
@@ -93,7 +93,7 @@ fourth_join AS (
     SELECT 
         third_join.id,
         third_join.game_name,
-        third_join.year,
+        third_join.published_year,
         third_join.min_players,
         third_join.max_players,
         third_join.game_duration,
@@ -122,6 +122,7 @@ fourth_join AS (
     FROM third_join
     LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_price') }} AS t5
         USING(id)
+    WHERE t5.product >= 5 and t5.product <=100
 )
 
 SELECT

@@ -3,12 +3,11 @@
 WITH first_join AS (
     SELECT
         t1.id,
+        t1.published_year,
         t1.game_name,
-        t1.year AS year_published,
         t1.min_players,
         t1.max_players,
         t1.age_min,
-        t1.categories,
         t1.mechanics,
         t1.family,
         t1.designer,
@@ -30,10 +29,12 @@ WITH first_join AS (
 second_join AS (
     SELECT
         first_join.id,
+        first_join.published_year,
         first_join.game_name,
         first_join.min_players,
         first_join.max_players,
         first_join.age_min,
+        first_join.type,
         t3.categories,
         first_join.mechanics,
         first_join.family,
@@ -48,8 +49,8 @@ second_join AS (
         first_join.nb_weights,
         first_join.avg_difficulty,
         t3.bgg_rank,
-        t3.difficulty,
-        first_join.type
+        t3.difficulty
+
 FROM first_join
 LEFT JOIN {{ ref('stg_bgg_kpi_exploration__bgg_games_enriched_with_kpis_part_two') }} as t3
     USING(id)
@@ -58,10 +59,12 @@ LEFT JOIN {{ ref('stg_bgg_kpi_exploration__bgg_games_enriched_with_kpis_part_two
 third_join AS (
     SELECT 
         second_join.id,
+        second_join.published_year,
         second_join.game_name,
         second_join.min_players,
         second_join.max_players,
         second_join.age_min,
+        second_join.type,
         second_join.categories,
         second_join.mechanics,
         second_join.family,
@@ -77,19 +80,10 @@ third_join AS (
         second_join.avg_difficulty,
         second_join.bgg_rank,
         second_join.difficulty,
-        t4.engagement_rate,
-        second_join.type
+        t4.engagement_rate
+
     FROM second_join
     LEFT JOIN {{ ref('stg_bgg_dataset_2__mapping_table_engagement_rate') }} as t4
-        USING(id)
-),
-
-games_detailed_info2025_join AS (
-    SELECT
-        third_join.*,
-        t5.yearpublished_clean
-    FROM {{ ref('stg_bgg_dataset_2__games_detailed_info2025') }} as t5
-    INNER JOIN third_join
         USING(id)
 ),
 

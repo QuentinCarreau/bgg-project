@@ -60,8 +60,6 @@ renamed as (
 
     from source
 
-    WHERE yearpublished_clean != 0
-
 )
 
 select * from renamed

@@ -11,7 +11,7 @@ renamed as (
     select
         id,
         name as game_name,
-        final_year as year,
+        final_year as published_year,
         min_players,
         max_players,
         game_duration,

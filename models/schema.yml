@@ -36,6 +36,7 @@ sources:
       - name: mapping_table_engagement_rate
       - name: avg_vader_rating_reviews
       - name: bgg_game_duration_cat_2
+      - name: good_features_count_review_sup_5
   - name: bgg_vues
     tables:
       - name: bgg_split_cats_mechs_family_year_clean
