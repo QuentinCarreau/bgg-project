@@ -90,7 +90,8 @@ third_join AS (
 fourth_join AS (
     SELECT
         third_join.*,
-        t6.vader
+        t6.vader,
+        SAFE_DIVIDE((owned+people_wishing),nb_of_ratings) as popularity_score
     FROM third_join
     INNER JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
@@ -98,7 +99,7 @@ fourth_join AS (
 
 SELECT
     fourth_join.*,
-    game_duration
+    t7.game_duration
 FROM fourth_join
 LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_game_duration_cat_2') }} AS t7
         USING(id)
