@@ -118,6 +118,7 @@ fourth_join AS (
         t5.versions,
         t5.lang,
         t5.product as price,
+        ROUND(t5.product / third_join.avg_rating , 2) AS price_over_quality,
         t5.game_name as game_name_price
     FROM third_join
     LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_price') }} AS t5
