@@ -91,12 +91,13 @@ fourth_join AS (
     SELECT
         third_join.*,
         t6.vader,
-        SAFE_DIVIDE((owned+people_wishing),nb_of_ratings) as popularity_score
+        SAFE_DIVIDE((owned+people_wishing),nb_of_ratings) as popularity_score,
+        SAFE_DIVIDE(people_wishing, owned) as interest_to_ownership
     FROM third_join
     INNER JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
 )
-,
+
 
 SELECT
     fourth_join.*,
@@ -111,5 +112,5 @@ SELECT
         ELSE "> 90 min"
     END AS game_duration_intervals
 FROM fourth_join
-LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_game_duration_cat_2') }} AS t7
+LEFT JOIN {{ ref('stg_bgg_vues__bgg_split_cats_mechs_family_year_clean') }} AS t7
         USING(id)

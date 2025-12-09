@@ -17,7 +17,7 @@ SELECT
     bgg.bgg_rank,
     bgg.engagement_rate,
     bgg.vader,
-    bgg.game_duration,
+    bgg.game_duration_intervals,
     bgg.difficulty,
     good_feat.rating,
     good_feat.comment,
