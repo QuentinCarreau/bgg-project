@@ -96,10 +96,20 @@ fourth_join AS (
     INNER JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
 )
+,
 
 SELECT
     fourth_join.*,
-    t7.game_duration
+    CASE
+        WHEN game_duration <= 5 THEN "0-5 min"
+        WHEN game_duration <= 10 THEN "5-10 min"
+        WHEN game_duration <= 20 THEN "10-20 min"
+        WHEN game_duration <= 30 THEN "20-30 min"
+        WHEN game_duration <= 45 THEN "30-45 min"
+        WHEN game_duration <= 60 THEN "45-60 min"
+        WHEN game_duration <= 90 THEN "60-90 min"
+        ELSE "> 90 min"
+    END AS game_duration_intervals
 FROM fourth_join
 LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_game_duration_cat_2') }} AS t7
         USING(id)
