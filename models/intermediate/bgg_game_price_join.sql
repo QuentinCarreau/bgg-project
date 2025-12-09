@@ -4,7 +4,7 @@ WITH first_join AS (
     SELECT
         t1.id,
         t1.game_name,
-        t1.year,
+        t1.published_year,
         t1.min_players,
         t1.max_players,
         t1.game_duration,
@@ -32,7 +32,7 @@ second_join AS (
     SELECT
         first_join.id,
         first_join.game_name,
-        first_join.year,
+        first_join.published_year,
         first_join.min_players,
         first_join.max_players,
         first_join.game_duration,
@@ -62,7 +62,7 @@ third_join AS (
     SELECT 
         second_join.id,
         second_join.game_name,
-        second_join.year,
+        second_join.published_year,
         second_join.min_players,
         second_join.max_players,
         second_join.game_duration,
@@ -88,53 +88,35 @@ third_join AS (
     LEFT JOIN {{ ref('stg_bgg_dataset_2__mapping_table_engagement_rate') }} as t4
         USING(id)
 )
-,
-fourth_join AS (
-    SELECT 
-        third_join.id,
-        third_join.game_name,
-        third_join.year,
-        third_join.min_players,
-        third_join.max_players,
-        third_join.game_duration,
-        third_join.age_min,
-        third_join.categories,
-        third_join.mechanics,
-        third_join.family,
-        third_join.designer,
-        third_join.artist,
-        third_join.publisher,
-        third_join.nb_of_ratings,
-        third_join.avg_rating,
-        third_join.bayes_avg,
-        third_join.owned,
-        third_join.people_wishing,
-        third_join.nb_weights,
-        third_join.avg_difficulty,
-        third_join.bgg_rank,
-        third_join.difficulty,
-        third_join.engagement_rate,
-        third_join.type,
-        t5.versions,
-        t5.lang,
-        t5.product as price,
-        ROUND(t5.product / third_join.avg_rating , 2) AS price_over_quality,
-        ROUND(t5.product * third_join.owned, 2) AS estimated_turnover,
-        t5.game_name as game_name_price
-    FROM third_join
-    LEFT JOIN {{ ref('stg_bgg_dataset_2__bgg_price') }} AS t5
-        USING(id)
-)
-,
-fifth_join AS (
-    SELECT
-        fourth_join.*,
-        t6.vader
-    FROM fourth_join
-    LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
-        USING(id)
-)
 
-SELECT *
-FROM fifth_join
-WHERE price >= 5 AND price <= 100 
+SELECT 
+    third_join.id,
+    third_join.game_name,
+    third_join.published_year,
+    third_join.min_players,
+    third_join.max_players,
+    third_join.game_duration,
+    third_join.age_min,
+    third_join.categories,
+    third_join.mechanics,
+    third_join.family,
+    third_join.designer,
+    third_join.artist,
+    third_join.publisher,
+    third_join.nb_of_ratings,
+    third_join.avg_rating,
+    third_join.bayes_avg,
+    third_join.owned,
+    third_join.people_wishing,
+    third_join.nb_weights,
+    third_join.avg_difficulty,
+    third_join.bgg_rank,
+    third_join.difficulty,
+    third_join.engagement_rate,
+    third_join.type,
+    price_aggreg.product as price,
+    ROUND(price_aggreg.product / third_join.avg_rating , 2) AS price_over_quality,
+    ROUND(price_aggreg.product * third_join.owned, 2) AS estimated_turnover,
+FROM third_join
+LEFT JOIN {{ ref('price_aggreg_by_game') }} AS price_aggreg
+    USING(id)
