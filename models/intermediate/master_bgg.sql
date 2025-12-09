@@ -124,16 +124,14 @@ SELECT
         WHEN max_players <= 6 THEN "3-6"
         WHEN max_players <= 10 THEN "7-10"
         WHEN max_players <= 15 THEN "11-15"
-        WHEN max_players <= 20 THEN "16-20"
-        ELSE "> 20"
+        ELSE "> 15"
     END AS max_players_intervals,
     CASE
         WHEN max_players <= 2 THEN 1
         WHEN max_players <= 6 THEN 2
         WHEN max_players <= 10 THEN 3
         WHEN max_players <= 15 THEN 4
-        WHEN max_players <= 20 THEN 5
-        ELSE 6
+        ELSE 5
     END AS max_players_sorting,
     CASE
         WHEN min_players <= 1 THEN "1"        
