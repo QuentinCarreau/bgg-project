@@ -1,5 +1,4 @@
-SELECT id, type, game_name, categories, mechanics, family, nb_of_ratings, avg_rating,
-  COUNT(comment) as comment,
+SELECT id, type, game_name, categories, mechanics, family, nb_of_ratings, avg_rating, nb_comment,
   SUM(push_your_luck) as push_your_luck, 
   SUM(player_elimination) as player_elimination, 
   SUM(communication_limit) as communication_limit, 
@@ -17,5 +16,5 @@ SELECT id, type, game_name, categories, mechanics, family, nb_of_ratings, avg_ra
   SUM(entertaining) as entertaining, 
   SUM(chaotic) as chaotic
 FROM {{ ref('master_bgg_features_count_enriched') }}
-GROUP BY id, type, game_name, categories, mechanics, family, nb_of_ratings, avg_rating
-ORDER BY comment DESC
+GROUP BY id, type, game_name, categories, mechanics, family, nb_of_ratings, avg_rating, nb_comment
+ORDER BY nb_comment DESC

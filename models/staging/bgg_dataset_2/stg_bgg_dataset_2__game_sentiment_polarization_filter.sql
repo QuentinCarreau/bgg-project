@@ -12,8 +12,9 @@ renamed as (
         id,
         game_name,
         comment,
-        vader_compound as vader
-
+        vader_compound as vader,
+        IF(vader_compound >= 0.05, 1, 0) AS vader_positive,
+        IF(vader_compound <= -0.05, 1, 0) AS vader_negative
     from source
 
 )
