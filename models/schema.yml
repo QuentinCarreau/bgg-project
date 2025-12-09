@@ -6,6 +6,7 @@ sources:
     loader: bigquery
     tables: 
       - name: game_sentiment_polarization
+      - name: game_sentiment_polarization_filter
       - name: bgg_price
       - name: enriched_types_clean
       - name: games_detailed_info2025
