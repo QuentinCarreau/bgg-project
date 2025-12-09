@@ -4,7 +4,7 @@ WITH first_join AS (
     SELECT
         t1.id,
         t1.game_name,
-        t1.year,
+        EXTRACT(YEAR FROM t1.year) AS year,
         t1.min_players,
         t1.max_players,
         t1.game_duration,
