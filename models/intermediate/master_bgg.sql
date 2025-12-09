@@ -148,5 +148,12 @@ SELECT
         WHEN min_players = 4 THEN 4
         WHEN min_players <= 8 THEN 5
         ELSE 6
-    END AS min_players_sorting
+    END AS min_players_sorting,
+    CASE
+        WHEN difficulty = "easy" THEN 1
+        WHEN difficulty = "casual" THEN 2
+        wHEN difficulty = "medium" THEN 3
+        WHEN difficulty = "hard" THEN 4
+        ELSE 5
+    END AS difficulty_sorting
 FROM fourth_join
