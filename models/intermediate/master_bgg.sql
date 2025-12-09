@@ -108,7 +108,6 @@ SELECT
         WHEN game_duration <= 30 THEN "20-30 min"
         WHEN game_duration <= 45 THEN "30-45 min"
         WHEN game_duration <= 60 THEN "45-60 min"
-        WHEN game_duration <= 90 THEN "60-90 min"
-        ELSE "> 90 min"
+        ELSE "> 60 min"
     END AS game_duration_intervals
 FROM fourth_join
