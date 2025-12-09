@@ -109,7 +109,7 @@ SELECT
         WHEN game_duration <= 45 THEN "30-45 min"
         WHEN game_duration <= 60 THEN "45-60 min"
         ELSE "> 60 min"
-    END AS game_duration_intervals
+    END AS game_duration_intervals,
     CASE
         WHEN game_duration <= 5 THEN 1
         WHEN game_duration <= 10 THEN 2
@@ -118,35 +118,35 @@ SELECT
         WHEN game_duration <= 45 THEN 5
         WHEN game_duration <= 60 THEN 6
         ELSE 7
-    END AS game_duration_sorting
+    END AS game_duration_sorting,
     CASE
-        WHEN max_players <= 2 THEN "1-2"
-        WHEN max_players <= 6 THEN "3-6"
-        WHEN max_players <= 10 THEN "7-10"
-        WHEN max_players <= 15 THEN "11-15"
+        WHEN t7.max_players <= 2 THEN "1-2"
+        WHEN t7.max_players <= 6 THEN "3-6"
+        WHEN t7.max_players <= 10 THEN "7-10"
+        WHEN t7.max_players <= 15 THEN "11-15"
         ELSE "> 15"
     END AS max_players_intervals,
     CASE
-        WHEN max_players <= 2 THEN 1
-        WHEN max_players <= 6 THEN 2
-        WHEN max_players <= 10 THEN 3
-        WHEN max_players <= 15 THEN 4
+        WHEN t7.max_players <= 2 THEN 1
+        WHEN t7.max_players <= 6 THEN 2
+        WHEN t7.max_players <= 10 THEN 3
+        WHEN t7.max_players <= 15 THEN 4
         ELSE 5
     END AS max_players_sorting,
     CASE
-        WHEN min_players <= 1 THEN "1"        
-        WHEN min_players = 2 THEN "2"
-        WHEN min_players = 3 THEN "3"
-        WHEN min_players = 4 THEN "4"
-        WHEN min_players <= 8 THEN "5-8"
+        WHEN t7.min_players <= 1 THEN "1"        
+        WHEN t7.min_players = 2 THEN "2"
+        WHEN t7.min_players = 3 THEN "3"
+        WHEN t7.min_players = 4 THEN "4"
+        WHEN t7.min_players <= 8 THEN "5-8"
         ELSE "9-10"
     END AS min_players_intervals,
     CASE
-        WHEN min_players <= 1 THEN 1
-        WHEN min_players = 2 THEN 2
-        WHEN min_players = 3 THEN 3
-        WHEN min_players = 4 THEN 4
-        WHEN min_players <= 8 THEN 5
+        WHEN t7.min_players <= 1 THEN 1
+        WHEN t7.min_players = 2 THEN 2
+        WHEN t7.min_players = 3 THEN 3
+        WHEN t7.min_players = 4 THEN 4
+        WHEN t7.min_players <= 8 THEN 5
         ELSE 6
     END AS min_players_sorting
 FROM fourth_join
