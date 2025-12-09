@@ -134,5 +134,21 @@ SELECT
         WHEN max_players <= 15 THEN 4
         WHEN max_players <= 20 THEN 5
         ELSE 6
-    END AS max_players_sorting
+    END AS max_players_sorting,
+    CASE
+        WHEN min_players <= 1 THEN "1"        
+        WHEN min_players = 2 THEN "2"
+        WHEN min_players = 3 THEN "3"
+        WHEN min_players = 4 THEN "4"
+        WHEN min_players <= 8 THEN "5-8"
+        ELSE "9-10"
+    END AS min_players_intervals,
+    CASE
+        WHEN min_players <= 1 THEN 1
+        WHEN min_players = 2 THEN 2
+        WHEN min_players = 3 THEN 3
+        WHEN min_players = 4 THEN 4
+        WHEN min_players <= 8 THEN 5
+        ELSE 6
+    END AS min_players_sorting
 FROM fourth_join
