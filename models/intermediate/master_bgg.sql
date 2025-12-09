@@ -149,7 +149,14 @@ SELECT
         WHEN t7.min_players = 4 THEN 4
         WHEN t7.min_players <= 8 THEN 5
         ELSE 6
-    END AS min_players_sorting
+    END AS min_players_sorting,
+    CASE
+        WHEN difficulty = "easy" THEN 1
+        WHEN difficulty = "casual" THEN 2
+        wHEN difficulty = "medium" THEN 3
+        WHEN difficulty = "hard" THEN 4
+        ELSE 5
+    END AS difficulty_sorting
 FROM fourth_join
 LEFT JOIN {{ ref('stg_bgg_vues__bgg_split_cats_mechs_family_year_clean') }} AS t7
         USING(id)
