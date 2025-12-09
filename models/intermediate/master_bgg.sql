@@ -118,5 +118,21 @@ SELECT
         WHEN game_duration <= 45 THEN 5
         WHEN game_duration <= 60 THEN 6
         ELSE 7
-    END AS game_duration_sorting
+    END AS game_duration_sorting,
+    CASE
+        WHEN max_players <= 2 THEN "1-2"
+        WHEN max_players <= 6 THEN "3-6"
+        WHEN max_players <= 10 THEN "7-10"
+        WHEN max_players <= 15 THEN "11-15"
+        WHEN max_players <= 20 THEN "16-20"
+        ELSE "> 20"
+    END AS max_players_intervals,
+    CASE
+        WHEN max_players <= 2 THEN 1
+        WHEN max_players <= 6 THEN 2
+        WHEN max_players <= 10 THEN 3
+        WHEN max_players <= 15 THEN 4
+        WHEN max_players <= 20 THEN 5
+        ELSE 6
+    END AS max_players_sorting
 FROM fourth_join
