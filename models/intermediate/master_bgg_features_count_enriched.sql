@@ -23,12 +23,15 @@ WITH feature_count as (
         bgg.min_players_intervals,
         bgg.max_players_intervals,
         bgg.difficulty,
+        bgg.mean_price,
+        bgg.estimated_turnover,
+        bgg.price_over_quality,
         polar.mean_vader,
         polar.nb_comment,
         polar.tot_vader_positive,
         polar.tot_vader_negative,
         polar.pos_minus_neg_vader
-        FROM {{ ref('master_bgg') }} as bgg
+        FROM {{ ref('bgg_game_price_join') }} as bgg
         LEFT JOIN {{ ref('game_sentiment_aggreg') }} as polar
             USING(id)
 )
