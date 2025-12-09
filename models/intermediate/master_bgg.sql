@@ -5,6 +5,7 @@ WITH first_join AS (
         t1.id,
         t1.published_year,
         t1.game_name,
+        EXTRACT(YEAR FROM t1.year) AS year,
         t1.min_players,
         t1.max_players,
         t1.age_min,
