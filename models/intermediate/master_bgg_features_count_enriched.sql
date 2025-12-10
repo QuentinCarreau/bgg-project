@@ -2,6 +2,7 @@ WITH feature_count as (
     SELECT
         bgg.id,
         bgg.published_year,
+        bgg.year,
         bgg.type,
         bgg.game_name,
         bgg.categories,

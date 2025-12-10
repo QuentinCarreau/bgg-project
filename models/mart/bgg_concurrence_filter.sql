@@ -140,4 +140,4 @@ AND p1.min_players_intervals in ('2','3')
 AND p1.max_players_intervals in ('3-4', '5-6', '7-10')
 AND p1.game_duration_intervals not in ('0-5 min', '5-10 min', '> 60 min')
 AND p1.published_year BETWEEN "2010-01-01" AND "2022-01-01"
-ORDER BY onwed DESC
+ORDER BY owned DESC
