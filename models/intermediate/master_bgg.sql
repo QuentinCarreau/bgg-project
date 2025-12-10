@@ -92,14 +92,14 @@ third_join AS (
 fourth_join AS (
     SELECT
         third_join.*,
-        t6.vader,
+        t6.vader AS vader,
         SAFE_DIVIDE((owned+people_wishing),nb_of_ratings) as popularity_score
     FROM third_join
     LEFT JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
 )
-
-SELECT
+ 
+SELECT 
     fourth_join.*,
     CASE
         WHEN game_duration <= 5 THEN "0-5 min"
