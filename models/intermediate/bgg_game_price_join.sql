@@ -4,6 +4,7 @@ SELECT
     master_bgg.id,
     game_name,
     published_year,
+    year,
     min_players,
     max_players,
     age_min,
