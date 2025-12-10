@@ -122,16 +122,18 @@ SELECT
     END AS game_duration_sorting,
     CASE
         WHEN t7.max_players <= 2 THEN "1-2"
-        WHEN t7.max_players <= 6 THEN "3-6"
+        WHEN t7.max_players <= 4 THEN "3-4"
+        WHEN t7.max_players <= 6 THEN "5-6"
         WHEN t7.max_players <= 10 THEN "7-10"
         WHEN t7.max_players <= 15 THEN "11-15"
         ELSE "> 15"
     END AS max_players_intervals,
     CASE
         WHEN t7.max_players <= 2 THEN 1
-        WHEN t7.max_players <= 6 THEN 2
-        WHEN t7.max_players <= 10 THEN 3
-        WHEN t7.max_players <= 15 THEN 4
+        WHEN t7.max_players <= 4 THEN 2
+        WHEN t7.max_players <= 6 THEN 3
+        WHEN t7.max_players <= 10 THEN 4
+        WHEN t7.max_players <= 15 THEN 5
         ELSE 5
     END AS max_players_sorting,
     CASE
