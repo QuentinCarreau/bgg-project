@@ -51,5 +51,4 @@ AND 'Deduction' IN UNNEST(categories)
 AND 'Action / Dexterity' IN UNNEST(categories) 
 AND 'Spies / Secret Agents' IN UNNEST(categories) 
 AND type = "Party Game"
-AND published_year >= "2010" 
-AND published_year <= "2022"
+AND published_year BETWEEN "2010-01-01" AND "2022-01-01"
