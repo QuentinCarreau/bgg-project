@@ -104,21 +104,21 @@ fourth_join AS (
 SELECT 
     fourth_join.*,
     CASE
-        WHEN game_duration <= 5 THEN "0-5 min"
-        WHEN game_duration <= 10 THEN "5-10 min"
-        WHEN game_duration <= 20 THEN "10-20 min"
-        WHEN game_duration <= 30 THEN "20-30 min"
-        WHEN game_duration <= 45 THEN "30-45 min"
-        WHEN game_duration <= 60 THEN "45-60 min"
+        WHEN fourth_join.game_duration <= 5 THEN "0-5 min"
+        WHEN fourth_join.game_duration <= 10 THEN "5-10 min"
+        WHEN fourth_join.game_duration <= 20 THEN "10-20 min"
+        WHEN fourth_join.game_duration <= 30 THEN "20-30 min"
+        WHEN fourth_join.game_duration <= 45 THEN "30-45 min"
+        WHEN fourth_join.game_duration <= 60 THEN "45-60 min"
         ELSE "> 60 min"
     END AS game_duration_intervals,
     CASE
-        WHEN game_duration <= 5 THEN 1
-        WHEN game_duration <= 10 THEN 2
-        WHEN game_duration <= 20 THEN 3
-        WHEN game_duration <= 30 THEN 4
-        WHEN game_duration <= 45 THEN 5
-        WHEN game_duration <= 60 THEN 6
+        WHEN fourth_join.game_duration <= 5 THEN 1
+        WHEN fourth_join.game_duration <= 10 THEN 2
+        WHEN fourth_join.game_duration <= 20 THEN 3
+        WHEN fourth_join.game_duration <= 30 THEN 4
+        WHEN fourth_join.game_duration <= 45 THEN 5
+        WHEN fourth_join.game_duration <= 60 THEN 6
         ELSE 7
     END AS game_duration_sorting,
     CASE
