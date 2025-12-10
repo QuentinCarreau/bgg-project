@@ -30,7 +30,7 @@ WITH feature_count as (
         polar.nb_comment,
         polar.tot_vader_positive,
         polar.tot_vader_negative,
-        polar.pos_minus_neg_vader
+        polar.ratio_vader
         FROM {{ ref('bgg_game_price_join') }} as bgg
         LEFT JOIN {{ ref('game_sentiment_aggreg') }} as polar
             USING(id)

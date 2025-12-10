@@ -5,6 +5,6 @@ SELECT
     AVG(vader) as mean_vader,
     SUM(vader_positive) as tot_vader_positive,
     SUM(vader_negative) as tot_vader_negative,
-    SUM(vader_positive - vader_negative) as pos_minus_neg_vader
+    SAFE_DIVIDE(SUM(vader_positive - vader_negative), COUNT(comment)) as ratio_vader
 FROM {{ ref('stg_bgg_dataset_2__game_sentiment_polarization') }}
 GROUP BY id, game_name
