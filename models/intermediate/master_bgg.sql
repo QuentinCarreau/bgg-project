@@ -4,7 +4,8 @@ WITH first_join AS (
     SELECT
         t1.id,
         t1.game_name,
-        EXTRACT(YEAR FROM t1.published_year) AS published_year,
+        t1.published_year,
+        EXTRACT(YEAR FROM t1.published_year) AS year,
         t1.game_duration,
         t1.min_players,
         t1.max_players,
@@ -31,6 +32,7 @@ second_join AS (
     SELECT
         first_join.id,
         first_join.published_year,
+        first_join.year,
         first_join.game_name,
         first_join.game_duration,
         first_join.min_players,
@@ -61,6 +63,7 @@ LEFT JOIN {{ ref('stg_bgg_kpi_exploration__bgg_games_enriched_with_kpis_part_two
 third_join AS (
     SELECT 
         second_join.id,
+        second_join.year,
         second_join.published_year,
         second_join.game_name,
         second_join.game_duration,
