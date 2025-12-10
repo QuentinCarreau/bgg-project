@@ -22,9 +22,13 @@ join_table AS (
 SELECT
     join_table.*,
     CASE
+        WHEN join_table.publisher_clean = "(Self-Published)" THEN "Auto-édition"
+        WHEN join_table.publisher_clean = "(Web published)" THEN "Auto-édition"
+        ELSE join_table.publisher_clean
+    END AS publisher,
+    CASE
         WHEN join_table.self_published_flag = "Auto-édition" THEN "Auto-édition"
         WHEN join_table.web_published_flag = "Auto-édition" THEN "Auto-édition"
         ELSE "Autres"
     END AS auto_edition_flag
 FROM join_table
-
