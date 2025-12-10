@@ -3,9 +3,8 @@
 WITH first_join AS (
     SELECT
         t1.id,
-        t1.published_year,
         t1.game_name,
-        EXTRACT(YEAR FROM t1.published_year) AS year,
+        EXTRACT(YEAR FROM t1.published_year) AS published_year,
         t1.min_players,
         t1.max_players,
         t1.age_min,
@@ -98,9 +97,8 @@ fourth_join AS (
     INNER JOIN {{ ref('stg_bgg_dataset_2__avg_vader_rating_reviews') }} AS t6
         USING(id)
 )
-
-
-SELECT
+ 
+SELECT 
     fourth_join.*,
     CASE
         WHEN game_duration <= 5 THEN "0-5 min"
