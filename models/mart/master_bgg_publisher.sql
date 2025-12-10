@@ -1,3 +1,5 @@
+{{config(materialized="table")}}
+
 WITH unnested_publisher AS (
     SELECT
         t1.* EXCEPT(publisher),
